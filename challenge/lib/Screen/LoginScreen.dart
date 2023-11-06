@@ -1,3 +1,4 @@
+import 'package:challenge/Screen/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -43,8 +44,9 @@ class _LoginScreen extends State<LoginScreen>{
                       borderSide: BorderSide(
                         color: Colors.black),),
                         filled: true,
-                        fillColor: Colors.white
+                        fillColor: Colors.white,
                           ),
+                          
             ),
           ),
 
@@ -57,8 +59,33 @@ class _LoginScreen extends State<LoginScreen>{
               enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
               fillColor: Colors.white,
               filled: true ),
+              obscureText: true,
             ),
           ),
+
+          //Button Pindah Home
+          Container(
+  margin: EdgeInsets.all(20),
+
+  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.purple),
+  child: TextButton(
+    onPressed: () {
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return HomeScreen(username: username.text);
+        },
+      ));
+    },
+    child: Text(
+      "LOGIN",
+      style: TextStyle(color: Colors.white),
+    ),
+    style: TextButton.styleFrom(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+    )
+  ),
+)
+
         ],
       ),
     );
