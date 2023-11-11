@@ -15,8 +15,9 @@ class HomeScreen extends StatelessWidget{
           Container(
             padding: EdgeInsets.only(left: 20,right: 20,top: 20),
             child: Text("Selamat Datang, $username",
-            style:TextStyle(color: Colors.white) ,),
+            style:TextStyle(color: Colors.white,fontSize: 30)),
           ),
+          
         ],
       ) ,
     );
