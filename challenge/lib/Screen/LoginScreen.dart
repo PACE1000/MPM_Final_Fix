@@ -1,4 +1,5 @@
 import 'package:challenge/Screen/HomeScreen.dart';
+import 'package:challenge/Screen/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -38,7 +39,9 @@ class _LoginScreen extends State<LoginScreen>{
               child: Column(
                 children: <Widget>[
                   Image.asset("images/iv_login.png"),
-                  Card(
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    child: Card(
                     child: 
                   //Username
                   Column(
@@ -107,13 +110,28 @@ class _LoginScreen extends State<LoginScreen>{
                         
                         Navigator.push(
                           context, MaterialPageRoute(builder: (context ){
-                          return HomeScreen(username: username.text);
+                          return WelcomeScreen(username: username.text);
                         }));
                       }, child: Text("LOGIN",
-                      style:TextStyle(color: Colors.white) ,)) ,)
+                      style:TextStyle(color: Colors.white) ,)) ,),
+
+                      Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(top: 10,left: 20,right: 20),
+                        child: Row(
+                        children: [
+                        Text("Belum Punya Akun?",textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black,fontFamily: "poppins_r",fontSize: 12,),),
+
+                        TextButton(
+                          
+                          onPressed: (){}, 
+                        child:Text("Daftar",style: TextStyle(color: Color(0xFF852884),fontFamily: "poppins_b",fontSize: 12),))
+                      ],),
+                      )
                   ]
                   ),
-                  
+                  ),
                   )
                 ],
               ) )

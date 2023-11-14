@@ -66,10 +66,9 @@ flutter:
         - asset: fonts/poppins/poppins_r.ttf
 
   assets:
-    - images/ic_rectangle.png
-    - images/ic_ellipse.png
-    - images/iv_login.png
-    - images/loginpage/ic_ellipse_home.png
+    - images/loginpage/
+    - images/welcome/
+    - images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
