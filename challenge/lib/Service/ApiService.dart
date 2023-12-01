@@ -17,5 +17,5 @@ abstract class ApiService {
   Future<List<UsersModel>> getusers();
 
   @GET('users/{login}')
-  Future<DetailModel> getDetail(@Path("login") String login);
+  Future<DetailModel> getDetail(@Path('login') String login);
 }

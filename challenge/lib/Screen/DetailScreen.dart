@@ -47,10 +47,13 @@ class DetailScreen extends StatelessWidget {
         future: apiservice.getDetail(login),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Text(snapshot.toString());
+            /*
+            DetailModel detail = snapshot.data!;
+            return Text(detail.login);
+            */
             if (snapshot.hasData) {
-              final DetailModel details = snapshot.data!;
-              return Expanded(child: _detail(details));
+              DetailModel detail = snapshot.data!;
+              return Expanded(child: _detail(detail));
             } else {
               return Text("User tidak ditemukan");
             }
@@ -60,14 +63,35 @@ class DetailScreen extends StatelessWidget {
         });
   }
 
-  Widget _detail(DetailModel details) {
-    return ListView.builder(itemBuilder: (context, index) {
-      return Container(
-        child: Text(
-          details.login,
-          style: TextStyle(color: Colors.black),
+  Widget _detail(DetailModel detail) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detail User'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              radius: 50,
+              backgroundImage: NetworkImage(detail.avatar_url),
+            ),
+            SizedBox(height: 16),
+            Text('Login: ${detail.login}', style: TextStyle(fontSize: 18)),
+            Text('ID: ${detail.id}', style: TextStyle(fontSize: 18)),
+            Text('Followers: ${detail.followers}',
+                style: TextStyle(fontSize: 18)),
+            Text('Following: ${detail.following}',
+                style: TextStyle(fontSize: 18)),
+            if (detail.twitter_username != null)
+              Text('Twitter: ${detail.twitter_username}',
+                  style: TextStyle(fontSize: 18)),
+            if (detail.email != null)
+              Text('Email: ${detail.email}', style: TextStyle(fontSize: 18)),
+          ],
         ),
-      );
-    });
+      ),
+    );
   }
 }

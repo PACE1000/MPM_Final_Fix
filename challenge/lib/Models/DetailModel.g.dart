@@ -10,10 +10,10 @@ DetailModel _$DetailModelFromJson(Map<String, dynamic> json) => DetailModel(
       login: json['login'] as String,
       id: json['id'] as int,
       avatar_url: json['avatar_url'] as String,
-      twitter_username: json['twitter_username'] as String,
+      twitter_username: json['twitter_username'] as String?,
       followers: json['followers'] as int,
       following: json['following'] as int,
-      email: json['email'] as String,
+      email: json['email'] as String?,
     );
 
 Map<String, dynamic> _$DetailModelToJson(DetailModel instance) =>
