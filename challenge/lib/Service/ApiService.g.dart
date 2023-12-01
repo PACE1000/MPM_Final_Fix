@@ -79,12 +79,12 @@ class _ApiService implements ApiService {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
   @override
-Future<List<DetailModel>> getDetail(String login) async {
+Future<DetailModel> getDetail(String login) async {
   const _extra = <String, dynamic>{};
   final queryParameters = <String, dynamic>{};
   final _headers = <String, dynamic>{};
-  final Map<String, dynamic>? _data = null;
-  final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<DetailModel>>(Options(
+  final DetailModel? _data = null;
+  final Response _result = await _dio.fetch<dynamic>(_setStreamType<DetailModel>(Options(
           method: 'GET',
           headers: _headers,
           extra: _extra,
@@ -101,9 +101,7 @@ Future<List<DetailModel>> getDetail(String login) async {
               baseUrl,
             ))));
 
-  var value = _result.data!
-      .map((dynamic i) => DetailModel.fromJson(i as Map<String, dynamic>))
-      .toList();
+  DetailModel value = DetailModel.fromJson(_result.data);
   return value;
 }
 }

@@ -45,18 +45,18 @@ class DetailScreen extends StatelessWidget{
     );
   }
 
-  FutureBuilder<List<DetailModel>> _body(){
+  FutureBuilder _body(){
   final apiservice = ApiService(Dio(BaseOptions(
     contentType: "application/json")),
     authToken: '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');
 
-  return FutureBuilder<List<DetailModel>>(
+  return FutureBuilder(
     future: apiservice.getDetail(login), 
     builder: (context, snapshot){
       if(snapshot.connectionState == ConnectionState.done){
-        return Text(login);
+        return Text(snapshot.toString());
         if(snapshot.hasData){
-          final List<DetailModel> details = snapshot.data!;
+          final DetailModel details = snapshot.data!;
           return Expanded(
             child: _detail(details));
         }else{
@@ -70,12 +70,11 @@ class DetailScreen extends StatelessWidget{
   );
 }
 
-  Widget _detail(List<DetailModel>details){
+  Widget _detail(DetailModel details){
     return ListView.builder(
-      itemCount: details.length,
       itemBuilder:(context,index) {
         return Container(
-          child: Text(details[index].login,
+          child: Text(details.login,
           style: TextStyle(color: Colors.black),),
         );
       });
