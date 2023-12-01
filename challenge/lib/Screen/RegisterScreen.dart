@@ -1,27 +1,24 @@
-import 'package:challenge/Screen/HomeScreen.dart';
-import 'package:challenge/Screen/RegisterScreen.dart';
-import 'package:challenge/Screen/WelcomeScreen.dart';
+import 'package:challenge/Screen/LoginScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class LoginScreen extends StatefulWidget{
-  LoginScreen({Key? key}):super(key: key);
+class RegisterScreen extends StatefulWidget{
+  RegisterScreen({Key? key}):super(key: key);
 
   @override
-  _LoginScreen createState() => _LoginScreen();
+  _RegisterScreen createState() => _RegisterScreen();
 }
 
-class _LoginScreen extends State<LoginScreen>{
+class _RegisterScreen extends State<RegisterScreen>{
   final TextEditingController username = TextEditingController();
   final TextEditingController password = TextEditingController();
+  final TextEditingController repassword = TextEditingController();
   bool isPasswordObscure = true;
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.green,
-      body: 
-      Stack(
+      body:Stack(
         children: <Widget>[
             Positioned(
               right: 0,
@@ -90,6 +87,31 @@ class _LoginScreen extends State<LoginScreen>{
                        
                     ),
                     ),
+
+                    Container(
+                      margin: EdgeInsets.only(top: 20,left: 20,right: 20),
+                      decoration: BoxDecoration(borderRadius:BorderRadius.all(Radius.circular(10)) ),
+                      child: TextField(
+                      controller: repassword,
+                      decoration: InputDecoration(
+                      hintText: "Masukkan Password Lagi",
+                      border:OutlineInputBorder(borderSide: BorderSide(color: Colors.black),borderRadius: BorderRadius.circular(10),),
+                      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black),borderRadius: BorderRadius.circular(10)),
+                      suffixIcon: IconButton(
+                        padding: EdgeInsets.only(right: 10),
+                        icon: Icon(isPasswordObscure ? Icons.remove_red_eye: Icons.remove_red_eye_outlined),
+                        onPressed: (){
+                          setState(() {
+                            isPasswordObscure = !isPasswordObscure;
+                          });
+                        },
+                      )
+                       ),obscureText: isPasswordObscure,
+                       
+                       
+                    ),
+                    ),
+
                     Container(
                       margin: EdgeInsets.only(
                         top: 20,
@@ -104,37 +126,24 @@ class _LoginScreen extends State<LoginScreen>{
                       child:TextButton(
                         onPressed: (){
                         
-                        if(username.text.isEmpty || password.text.isEmpty){
+                        if(username.text.isEmpty || password.text.isEmpty|| repassword.text.isEmpty){
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Username / Password Harus Diisi"),backgroundColor: Colors.red,));
                           return;
+                        }else{
+                          if(password.text == repassword.text){
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Data Berhasil disimpan"),backgroundColor: Colors.green,));
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return LoginScreen();
+                            }));
+                          } else{
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Password tidak sama"),backgroundColor: Colors.red,));
+                          }
                         }
                         
-                        Navigator.push(
-                          context, MaterialPageRoute(builder: (context ){
-                          return WelcomeScreen(username: username.text);
-                        }));
-                      }, child: Text("LOGIN",
+                          }, child: Text("Daftar",
                       style:TextStyle(color: Colors.white) ,)) ,),
 
-                      Container(
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.only(top: 10,left: 20,right: 20),
-                        child: Row(
-                        children: [
-                        Text("Belum Punya Akun?",textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.black,fontFamily: "poppins_r",fontSize: 12,),),
-
-                        TextButton(
-                          
-                          onPressed: (){
-                            Navigator.push(context, 
-                            MaterialPageRoute(builder: (context){
-                              return RegisterScreen();
-                            }));
-                          }, 
-                        child:Text("Daftar",style: TextStyle(color: Color(0xFF852884),fontFamily: "poppins_b",fontSize: 12),))
-                      ],),
-                      )
+                      
                   ]
                   ),
                   ),
@@ -142,7 +151,7 @@ class _LoginScreen extends State<LoginScreen>{
                 ],
               ) )
         ],
-      )
+      ) ,
     );
   }
-} 
+}

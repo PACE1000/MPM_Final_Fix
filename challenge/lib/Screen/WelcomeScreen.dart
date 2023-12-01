@@ -30,6 +30,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               bottom: 30,
             ),
             Positioned(
+              
               bottom: 0,
               child: Image.asset("images/welcome/ic_welcome.png"),
             ),
