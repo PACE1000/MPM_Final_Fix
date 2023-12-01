@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
   FutureBuilder _body() {
     final apiservice = ApiService(
         Dio(BaseOptions(contentType: "application/json")),
-        authToken: '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');
+        authToken: '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');
 
     return FutureBuilder(
         future: apiservice.getusers(),

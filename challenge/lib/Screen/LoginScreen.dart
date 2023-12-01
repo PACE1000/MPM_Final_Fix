@@ -1,3 +1,4 @@
+import 'package:challenge/Screen/AboutUsScreen.dart';
 import 'package:challenge/Screen/HomeScreen.dart';
 import 'package:challenge/Screen/RegisterScreen.dart';
 import 'package:challenge/Screen/WelcomeScreen.dart';
@@ -23,6 +24,17 @@ class _LoginScreen extends State<LoginScreen>{
       body: 
       Stack(
         children: <Widget>[
+            Positioned(
+              top: 20,
+              right: 10,
+              child: Container(
+                    child: ElevatedButton(
+                      onPressed:(){
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return AboutUsScreen();
+                        }));
+                      } , child: Icon(Icons.question_mark)),
+                  )),
             Positioned(
               right: 0,
               top: 100,
@@ -138,7 +150,8 @@ class _LoginScreen extends State<LoginScreen>{
                   ]
                   ),
                   ),
-                  )
+                  ),
+                  
                 ],
               ) )
         ],
