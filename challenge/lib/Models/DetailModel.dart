@@ -21,6 +21,6 @@ class DetailModel{
     required this.email
   });
 
-  factory DetailModel.fromJson(Map<String, dynamic>json) => _$DetailModelFromJson(json);
+  factory DetailModel.fromJson(Map<String, dynamic> json) => _$DetailModelFromJson(json);
   Map<String, dynamic> toJson() =>_$DetailModelToJson(this);
 }

@@ -15,6 +15,6 @@
       required this.type
     });
 
-    factory UsersModel.fromJson(Map<String, dynamic>json) => _$UsersModelFromJson(json);
+    factory UsersModel.fromJson(Map<String, dynamic> json) => _$UsersModelFromJson(json);
     Map<String, dynamic> toJson() => _$UsersModelToJson(this);
   }

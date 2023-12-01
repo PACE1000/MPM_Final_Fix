@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
   FutureBuilder _body(){
     final apiservice = ApiService(Dio(BaseOptions(
       contentType: "application/json")),
-      authToken: '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');
+      authToken: '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');
 
     return FutureBuilder(
       future: apiservice.getusers(), 
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
   }
 
-  Widget _users(List<UsersModel>users){
+  Widget _users(List<UsersModel> users){
     return ListView.builder(
       itemCount: users.length,
       itemBuilder: (context, index){
