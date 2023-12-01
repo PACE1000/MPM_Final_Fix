@@ -1,20 +1,22 @@
-  import 'package:json_annotation/json_annotation.dart';
-  part 'UsersModel.g.dart';
+// ignore_for_file: non_constant_identifier_names, file_names
 
-  @JsonSerializable()
-  class UsersModel{
-    String login;
-    int id;
-    String avatar_url;
-    String type;
+import 'package:json_annotation/json_annotation.dart';
+part 'UsersModel.g.dart';
 
-    UsersModel({
-      required this.login,
+@JsonSerializable()
+class UsersModel {
+  String login;
+  String id;
+  String avatar_url;
+  String type;
+
+  UsersModel(
+      {required this.login,
       required this.id,
       required this.avatar_url,
-      required this.type
-    });
+      required this.type});
 
-    factory UsersModel.fromJson(Map<String, dynamic> json) => _$UsersModelFromJson(json);
-    Map<String, dynamic> toJson() => _$UsersModelToJson(this);
-  }
+  factory UsersModel.fromJson(Map<String, dynamic> json) =>
+      _$UsersModelFromJson(json);
+  Map<String, dynamic> toJson() => _$UsersModelToJson(this);
+}

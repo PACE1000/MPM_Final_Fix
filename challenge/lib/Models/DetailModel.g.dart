@@ -22,7 +22,7 @@ Map<String, dynamic> _$DetailModelToJson(DetailModel instance) =>
       'id': instance.id,
       'avatar_url': instance.avatar_url,
       'twitter_username': instance.twitter_username,
-      'followers': instance.followers,  
+      'followers': instance.followers,
       'following': instance.following,
       'email': instance.email,
     };
